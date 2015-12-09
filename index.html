@@ -5,7 +5,66 @@
   <h1>Your FINAL SKETCH Title</h1>
   <script type="text/processing" data-processing-target="mycanvas-final">
   
+void setup(){
+  size(1280,800);
+  background(0,0,0);
+  //arcs
+  noFill();
+  stroke(255,255,255);
+  strokeWeight(5);
+  arc(500,500,500,150,0,HALF_PI);
+  stroke(200,255,40);
+  arc(300,300,300,600,QUARTER_PI,PI);
+  //rectangles
+  rect(45,98,246,463);
+  rect(635,723,24,214);
+  //ellipse
+  stroke(59,168,78);
+  ellipse(462,478,254,137);
+  stroke(42,24,47);
+  ellipse(238,247,843,246);
 
+  //points
+  stroke(124,65,0);
+  point(355,158);
+  point(197,345);
+  
+}
+void draw(){
+  background(0,0,0);
+  beginShape(QUAD_STRIP);
+    //arcs
+  noFill();
+  stroke(255,255,255);
+  strokeWeight(5);
+  arc(500,500,500,150,0,HALF_PI);
+  stroke(200,255,40);
+  arc(300,300,300,600,QUARTER_PI,PI);
+  //rectangles
+  rect(45,98,246,463);
+  rect(635,723,24,214);
+  //ellipse
+  stroke(59,168,78);
+  ellipse(462,478,254,137);
+  stroke(42,24,47);
+  ellipse(238,247,843,246);
+
+  //points
+  stroke(124,65,0);
+  point(355,158);
+  point(197,345);
+  //triangle
+    stroke(241,97,54);
+  triangle(mouseX,467,42,78,341,621);
+    stroke(16,78,135);
+  triangle(53,482,mouseX,23,532,562);
+    //lines
+  stroke(198,148,248);
+  line(489,mouseY,187,138);
+  stroke(255,255,255);
+  line(489,102,1200,mouseY);
+  endShape(CLOSE);
+}
 
   </script>
   <canvas id="mycanvas-final"></canvas>
