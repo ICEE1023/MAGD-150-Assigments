@@ -1,0 +1,105 @@
+Timer myTimer;
+elephant myanimal;
+int centerX, centerY,count1;
+ PImage fin;
+ String win = "You Win :)";
+ String lose = "You Lose :(";
+void setup()
+{
+  centerX = 150;
+  centerY = 500;
+  count1 = centerX;
+  background(255);
+  size(800,600);
+  myTimer = new Timer(5000);
+  myanimal = new elephant(centerX,centerY);
+}
+void draw()
+{
+  if(!myTimer.isFinished())
+  {                                                                                                             
+      background(255);
+      fin = loadImage("fin.jpg");
+      image(fin,550,centerY,50,50);
+      myanimal.display();
+      myanimal.move();
+      line(0,centerY+50,width,centerY+50);
+    if(keyPressed)
+    {
+      if(key == ' ')
+      {
+        count1 = count1 + 5;
+      } 
+    }
+  }
+  if (myTimer.isFinished()&& count1 > 550)
+  {
+      background(100);
+      textSize(30);
+      text(win,330, height/4);
+  }
+  if (myTimer.isFinished()&& count1 < 550)
+  {
+      background(100);
+      textSize(30);
+      text(lose,330, height/4);
+  }
+  println(count1);
+}
+class elephant{
+  int centerX, centerY;
+  PImage animal;
+  // constructor
+  elephant()
+  {
+    centerX = 50;
+    centerY = 50;
+    animal = loadImage("elephant.jpg");
+  }
+  elephant(int _centerX, int _centerY)
+  {
+    centerX = _centerX;
+    centerY = _centerY;
+    animal = loadImage("elephant.jpg");
+  }
+  void display()
+  {
+    image(animal,centerX,centerY,50,50);
+  }
+  
+  void move() 
+  {
+    if(keyPressed)
+    {
+      if(key == ' ')
+      {
+        centerX = centerX + 5;
+        centerY = centerY;
+      } 
+    }
+  }
+}
+class Timer{
+  int savedTime;  // When Timer started
+  int totalTime;  // How long Timer should last
+  
+  // The constructor, set how long the Timer last with integer value
+  Timer(int _totalTime){
+    totalTime = _totalTime;
+  }
+  
+  // Start the Timer
+  void start() {
+    savedTime = millis();
+  }
+  
+  boolean isFinished() {
+   // check how much time has passed
+   int passedTime = millis() - savedTime;
+   if (passedTime > totalTime) {
+     return true;
+   } else {
+     return false;
+   }
+  }
+}
