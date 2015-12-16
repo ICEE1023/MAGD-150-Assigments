@@ -1,0 +1,124 @@
+int tronx=50, trony=50,xchange = 0, ychange = 0, rectw = 10, recth = 30;
+String tron = "T R O N";
+String game = "You are out of bounds";
+String reset = "Press space to reset";
+boolean vert = true;
+boolean newscene = false;
+int centx, centy;
+void setup()
+{
+  if (newscene == false)
+    {
+      size(800, 600);
+      background(0);
+    }
+}
+
+void draw()
+{
+  if (newscene == false)
+  {
+    drawrect();
+    for(int x = 255; x > 0; x= x - 5)
+    {
+      strokeWeight(0);
+      fill(x);
+      rect (500-x, 120, 30,30);
+    }
+    textSize(30);
+    text(tron,330, height/4);
+    if(tronx >= width || tronx <= 0)
+      newscene = true;
+    if(trony >= height || trony <= 0 )
+      newscene = true;
+  }
+  else if (newscene == true)
+  {
+    background(150);
+    textSize(30);
+    text(game,330, height/4);
+    text(reset, 330, (height/4)+31);
+  }
+    
+}
+void randpos()
+{
+  tronx = round(random(0,width-10));
+  trony = round(random(0,height-10));
+  background(0);
+}
+void keyPressed()
+{
+  if(key == 'w')
+  {
+    ychange = -2;
+    xchange = 0;
+    vert = true;
+  }
+  else if(key == 'd')
+  {
+    xchange = 2;
+    ychange = 0;
+    vert = false;
+  }
+  else if(key == 's')
+  {
+    ychange = 2;
+    xchange = 0;
+    vert = true;
+  }
+  else if(key == 'a')
+  {
+    xchange = -2;
+    ychange = 0;
+    vert = false;
+  }
+  else
+  {
+    xchange = 0;
+    ychange = 0;
+  }
+  if (key == ' ')
+  {
+    randpos();
+    newscene = false;
+  }
+}
+void cal()
+{
+  tronx = tronx + xchange;
+  trony = trony + ychange;
+}
+void dir()
+{
+  if (vert == true)
+  {
+    rectw = 10;
+    recth = 30;
+  }
+  else
+  {
+    rectw = 30;
+    recth = 10;
+  }
+}
+void drawrect()
+{
+  cal();
+  strokeWeight(0);
+  fill(255,0,0);
+  dir();
+  rect(tronx, trony, rectw, recth);
+  fill(75,75,75);
+  if(vert == false)
+  {
+    centx = tronx ;
+    centy = trony - 10;
+  }
+  else
+  {
+    centy = trony + 10;
+    centx = tronx;
+  }
+  rect(tronx, trony+10, 10,10);
+}
