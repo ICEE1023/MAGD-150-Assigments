@@ -2,14 +2,270 @@
   <header>
   <script src="https://raw.githubusercontent.com/processing-js/processing-js/v1.4.8/processing.js"></script>
   </header>
-  <h1>Your FINAL SKETCH Title</h1>
-  <script type="text/processing" data-processing-target="mycanvas-final">
+  <h1>Lunar Ship</h1>
+  <script type="text/processing" data-processing-target="LunarShip.pde">
 
+float posX = 25;
+float posY = 200;
+float velocityY = 0;
+float velocityX = 0;
+boolean onGround = false;
+ship myship;
+void setup()
+{
+  size(800,600);
+  myship = new ship();
+}
+void draw()
+{
+  background(0);
+  stroke(53,178,53);
+  strokeWeight(2);
+  line(0, height/1.5, width, height/1.5);
+  update();
+}
+void update()
+{
+  myship.display();
+  myship.keyPressed();
+}
+void mousePressed()
+{
 
+}
+void randpos()
+{
+ // tronx = round(random(0,width-10));
+//  trony = round(random(0,height-10));
+  background(0);
+}
+
+void cal()
+{
+ // tronx = tronx + xchange;
+  //trony = trony + ychange;
+}
+class ship{
+  float centerX, centerY;
+  float gravity = .5;
+float momentum = 0;
+float changeY = 0;
+float changeX = 0;
+  PImage lunarship;
+  // constructor
+  ship()
+  {
+    centerX = 50;
+    centerY = 50;
+    lunarship = loadImage("Space Ship.png");
+  }
+  ship(int _centerX, int _centerY)
+  {
+    centerX = _centerX;
+    centerY = _centerY;
+    lunarship = loadImage("Space Ship.png");
+  }
+  void display()
+  {
+    centerX = centerX + momentum;
+    centerY = centerY + gravity;
+    image(lunarship, centerX ,centerY ,50,50);
+    if (centerY >= 350)
+    {
+      gravity = 0;
+      centerY = 350;
+    }
+    println(centerY);
+      
+  }
+  
+void keyPressed()
+{
+  if(key == '0')
+  {
+    changeX = 0;
+    changeY = 0;
+  }
+  else if(key == '1')
+  {
+    changeX = .1;
+    changeY = .1;
+  }
+  else if(key == '2')
+  {
+    changeX = .2;
+    changeY = .2;
+  }
+  else if(key == '3')
+  {
+    changeX = .3;
+    changeY = .3;
+  }
+  else if(key == '4')
+  {
+    changeX = .4;
+    changeY = .4;
+  }
+    else if(key == '5')
+  {
+    changeX = .5;
+    changeY = .5;
+  }
+    else if(key == '6')
+  {
+    changeX = .6;
+    changeY = .6;
+  }
+    else if(key == '7')
+  {
+    changeX = .7;
+    changeY = .7;
+  }
+    else if(key == '8')
+  {
+    changeX = .8;
+    changeY = .8;
+  }
+    else if(key == '9')
+  {
+    changeX = .9;
+    changeY = .9;
+  }
+  if (key == 'w')
+  {
+    if (changeY == 0)
+    {
+      gravity = gravity + changeY;
+    }
+    if (changeY == 0.1)
+    {
+      gravity = gravity + changeY;
+    }
+    if (changeY == 0.2)
+    {
+      gravity = gravity + changeY;
+    }
+    if (changeY == 0.3)
+    {
+      gravity = gravity + changeY;
+    }
+    if (changeY == 0.4)
+    {
+      gravity = gravity + changeY;
+    }
+    if (changeY == 0.5)
+    {
+      gravity = gravity + changeY;
+    }
+    if (changeY == 0.6)
+    {
+      gravity = gravity + changeY;
+    }
+    if (changeY == 0.7)
+    {
+      gravity = gravity + changeY;
+    }
+    if (changeY == 0.8)
+    {
+      gravity = gravity + changeY;
+    }
+    if (changeY == 0.9)
+    {
+      gravity = gravity + changeY;
+    }
+  }
+  if (key == 'a')
+  {
+    if (changeX == 0)
+    {
+      momentum = momentum + -changeX;
+    }
+    if (changeX == 0.1)
+    {
+      momentum = momentum + -changeX;
+    }
+    if (changeX == 0.2)
+    {
+      momentum = momentum + -changeX;
+    }
+    if (changeX == 0.3)
+    {
+      momentum = momentum + -changeX;
+    }
+    if (changeX == 0.4)
+    {
+      momentum = momentum + -changeX;
+    }
+    if (changeX == 0.5)
+    {
+      momentum = momentum + -changeX;
+    }
+    if (changeX == 0.6)
+    {
+      momentum = momentum + -changeX;
+    }
+    if (changeX == 0.7)
+    {
+      momentum = momentum + -changeX;
+    }
+    if (changeX == 0.8)
+    {
+      momentum = momentum + -changeX;
+    }
+    if (changeX == 0.9)
+    {
+      momentum = momentum + -changeX;
+    }
+  }
+    if (key == 'd')
+  {
+    if (changeX == 0)
+    {
+      momentum = momentum + changeX;
+    }
+    if (changeX == 0.1)
+    {
+      momentum = momentum + changeX;
+    }
+    if (changeX == 0.2)
+    {
+      momentum = momentum + changeX;
+    }
+    if (changeX == 0.3)
+    {
+      momentum = momentum + changeX;
+    }
+    if (changeX == 0.4)
+    {
+      momentum = momentum + changeX;
+    }
+    if (changeX == 0.5)
+    {
+      momentum = momentum + changeX;
+    }
+    if (changeX == 0.6)
+    {
+      momentum = momentum + changeX;
+    }
+    if (changeX == 0.7)
+    {
+      momentum = momentum + changeX;
+    }
+    if (changeX == 0.8)
+    {
+      momentum = momentum + changeX;
+    }
+    if (changeX == 0.9)
+    {
+      momentum = momentum + changeX;
+    }
+  }
+}
+}
 
   </script>
-  <canvas id="mycanvas-final"></canvas>
-  <p>Description: On my FINAL SKETCH ASSIGNMENT</p>
+  <canvas id="LunarShip.pde"></canvas>
+  <p>Description: This is Lunar Ship the controls are as followed w to move down and a and s to move left and right.</p>
         <br />
         <br />
   <h1>Abstract Art</h1>
