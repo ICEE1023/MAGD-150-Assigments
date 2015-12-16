@@ -1,0 +1,90 @@
+int pressed = 1;
+int pressedState = 1;
+String num = "0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101";
+String numa = "1010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010";
+void setup()
+{
+  size(1280,800);
+
+}
+void draw()
+{
+  //Background 
+  background(10);
+  textSize(20);
+  fill(130,255,130,50);
+  text(num,5,20);
+  text(numa,5,40);
+  text(num,5,60);
+  text(numa,5,80);
+  text(num,5,100);
+  text(numa,5,120);
+  text(num, 5, 140);
+  text(numa, 5, 160);
+    text(num, 5, 180);
+  text(numa, 5, 200);
+    text(num, 5, 220);
+  text(numa, 5, 240);
+    text(num, 5, 260);
+  text(numa, 5, 280);
+    text(num, 5, 300);
+  text(numa, 5, 320);
+    text(num, 5, 340);
+  text(numa, 5, 360);
+    text(num, 5, 380);
+  text(numa, 5, 400);
+    text(num, 5, 420);
+  text(numa, 5, 440);
+    text(num, 5, 460);
+  text(numa, 5, 480);
+    text(num, 5, 500);
+  text(numa, 5, 520);
+    text(num, 5, 540);
+  text(numa, 5, 560);
+    text(num, 5, 580);
+  text(numa, 5, 600);
+    text(num, 5, 620);
+  text(numa, 5, 640);
+    text(num, 5, 660);
+  text(numa, 5, 680);
+    text(num, 5, 700);
+  text(numa, 5, 720);
+    text(num, 5, 760);
+  text(numa, 5, 780);
+  
+    textSize(32);
+  fill(0,0,0);
+ //stick figure with qoute
+  fill(100,100,100);
+  text("I invented the internet.", 700,280);
+  fill(255,255,255);
+  strokeWeight(10);
+  ellipse(640,400, 100,100);
+  fill(0,0,0);
+  line(630,420,650,420);
+  line(640,450,640,500);
+  
+  //blinking
+  if (pressedState == 1)
+  {
+    
+    fill(0, 0, 0);
+    point(620,380);
+    point(660,380);
+  }
+  strokeWeight(1);
+  fill(100,50,0);
+  rect(515,500,250,100);
+  fill(0,0,0);
+  text("Al Gore", 520,540);
+  strokeWeight(5);
+  line(690,340,750,300);
+  noFill();
+  arc(640,375,200,200,0,HALF_PI);
+  
+}
+void mousePressed()
+{
+  pressed = pressed +1;
+  pressedState = (pressed % 2);
+}
