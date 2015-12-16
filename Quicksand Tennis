@@ -1,0 +1,83 @@
+float posX = 25;
+float posY = 200;
+int ballD = 18;
+float velocityY = 0;
+float velocityX = 5;
+float gravity = .5;
+float changeY = -10;
+boolean onGround = false;
+float count = 0;
+String tennis = "T E N N I S";
+float cover = 500;
+void setup()
+{
+  size(800,600);
+}
+void draw()
+{
+  background(0);
+  stroke(53,178,53);
+  strokeWeight(2);
+  line(0, height/1.5, width, height/1.5);
+  update();
+}
+void update()
+{
+//adjusting posX for ellipse
+  if (posX+9 >= width)
+  {
+    velocityX = -5;
+  }
+  else if(posX - 9 <=0)
+  {
+    velocityX = +5;
+  }
+//adjusting posY for ellipse
+  if ((posY + (9)) >= (height/1.5) && count != 10 )
+  {
+    velocityY = changeY;
+    changeY = changeY +1;
+    count++;
+  }
+  else if ((posY + (9)) >= (height/1.5) && count == 10)
+  {
+    posY = height/1.5 - 9;
+    onGround = true;
+  }
+  
+  else
+  {
+    onGround = false;
+  }
+  if(onGround == true)
+  {
+    posY = height/1.5 - 9;
+  }
+  velocityY = gravity + velocityY;
+  posY = velocityY + posY;
+  posX = velocityX + posX;
+  fill(53,178,53);
+  ellipse(posX,posY, ballD, ballD);
+  line (width/2, height/1.5, width/2, height/1.5 -50);
+  for(int x = 255; x > 0; x= x - 5)
+  {
+    strokeWeight(0);
+    fill(x);
+    rect (500-x, 120, 30,30);
+  }
+  textSize(30);
+  text(tennis,330, height/4);
+}
+void mousePressed()
+{
+  jump();
+}
+void jump()
+{
+  if(onGround)
+  {
+      velocityY = -10;
+      changeY = -10;
+      count = 0;
+  }
+}
